@@ -7,7 +7,7 @@ Originally developed as a 2015 [Ruby for Good](http://rubyforgood.com/) project.
 
 * Ruby 2.2
 * Rails 4.2
-* [Postgres](http://www.postgresql.org/) 9.3
+* [Postgres](http://www.postgresql.org/) 9.4
 * Clone the repo.
 * `bundle install`
 * `bundle exec rake db:setup`
