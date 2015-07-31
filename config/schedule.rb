@@ -14,7 +14,11 @@
 # end
 #
 every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
-  runner "Task.do_something_great"
+  runner "Task.reminds_users_of_submission"
+end
+
+every :tuesday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
+  runner "Task.reminds_users_of_late_submission"
 end
 
 # Learn more: http://github.com/javan/whenever
