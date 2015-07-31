@@ -4,7 +4,12 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    @forms = Form.all
+    if params[:department_id]
+      @forms = Form.where(department_id:params[:department_id])
+    else
+      @forms = Form.all
+    end
+    @departments = Department.all
   end
 
   # GET /forms/1

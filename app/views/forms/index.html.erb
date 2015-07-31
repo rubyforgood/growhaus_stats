@@ -1,28 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Forms</h1>
+<div class="row">
+  <div class="col s8">
+    <h3>Data Entry</h3>
+  </div>
+  <div class="col s4">
 
-<table>
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn' href='#' data-activates='department-dropdown'>Filter Department</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='department-dropdown' class='dropdown-content'>
+      <% @departments.each do |dept| %>
+        <li>
+          <%= link_to dept.name, forms_path(department_id:dept.id) %>
+        </li>
+      <% end %>
+      <li class="divider"></li>
+      <li><%= link_to "All", forms_path %></li>
+    </ul>
+
+  </div>
+  
+</div>
+
+<table class="hoverable">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Google form url</th>
-      <th>Frequency</th>
       <th>Department</th>
-      <th colspan="3"></th>
+      <th>Frequency</th>
+      <th>Last Updated</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @forms.each do |form| %>
       <tr>
-        <td><%= form.name %></td>
-        <td><%= form.google_form_url %></td>
+        <td><%= link_to form.name, form %></td>
+        <td><%= form.department.name %></td>
         <td><%= form.frequency %></td>
-        <td><%= form.department_id %></td>
-        <td><%= link_to 'Show', form %></td>
-        <td><%= link_to 'Edit', edit_form_path(form) %></td>
-        <td><%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>TODO!</td>
+        <td>
+          <%= link_to edit_form_path(form) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to form, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="material-icons red-text">delete</i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +59,4 @@
 
 <br>
 
-<%= link_to 'New Form', new_form_path %>
+<%= link_to 'New Form', new_form_path, class:"btn" %>
