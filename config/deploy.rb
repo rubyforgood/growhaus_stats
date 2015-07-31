@@ -4,7 +4,6 @@ lock '3.4.0'
 set :application, 'growhaus_stats'
 set :repo_url, 'git@github.com:rubyforgood/growhaus_stats.git'
 
-set :branch, :deploy
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
