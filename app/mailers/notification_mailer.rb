@@ -2,15 +2,16 @@ class NotificationMailer < ApplicationMailer
 
   def weekly_submission_reminder #occurs on Monday
    
-  	users = User.all #.find_by(admin: true)
+  	@users = User.all #.find_by(admin: true)
   	emails = users.all.map(&:email)
-  	
+
     mail(to: emails, :subject => "Weekly Data Submission Reminder")
   end
 
   def not_submitted_reminder #occurs on Tuesday at noon
-   
-  	emails = User.all.map(&:email)
+    
+    @users = User.all #.find_by(admin: true)
+  	emails = users.all.map(&:email)
 
     mail(to: emails, :subject => "Weekly Data Submission Reminder, Part 2")
   end
