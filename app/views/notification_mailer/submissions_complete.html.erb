@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Please complete your weekly data submissions.</title>
+<link href="styles.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body itemscope itemtype="http://schema.org/EmailMessage">
+
+<table class="body-wrap">
+	<tr>
+		<td></td>
+		<td class="container" width="600">
+			<div class="content">
+				<table class="main" width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="alert alert-warning">
+							<%= @user.name%>, please log into the <%= @user.department %> site and complete your weekly data submission.
+						</td>
+					</tr>
+					<tr>
+						<td class="content-wrap">
+							<table width="100%" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="content-block">
+										Your submissions is needed by Wednesday morning.
+									</td>	
+								</tr>
+								<tr>
+									<td class="content-block">
+										<a href=<%= @url %> class="btn-primary">Click here to submit</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		<td></td>
+	</tr>
+</table>
+
+</body>
+</html>
