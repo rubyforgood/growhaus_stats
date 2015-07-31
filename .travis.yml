@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+  - "2.2.1"
+addons:
+  postgresql: "9.4"
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create db:migrate
