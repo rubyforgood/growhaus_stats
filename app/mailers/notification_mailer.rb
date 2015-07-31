@@ -1,7 +1,7 @@
 class NotificationMailer < ApplicationMailer
 
   def weekly_submission_reminder #occurs on Monday
-   
+   # Date::DAYNAMES[Date.today.wday] == "Monday"
   	@users = User.all #.find_by(admin: true)
   	emails = users.all.map(&:email)
 
