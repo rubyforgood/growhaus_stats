@@ -22,8 +22,8 @@ Rails.application.configure do
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "mg.mygrupz.mailgun.org", # need to change
-  :user_name => "postmaster@mg.mygrupz.com", # need to change
+  :domain => "mg.growhaus.blrice.net", # need to change
+  :user_name => "postmaster@mg.growhaus.blrice.net",
   :password => ENV['MAILGUN_PASSWORD'],
   :enable_starttls_auto => true,
 }
