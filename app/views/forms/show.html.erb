@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
+  <%= @form.department.name %>:
   <%= @form.name %>
-</p>
+</h1>
 
 
 <p>
@@ -11,17 +11,13 @@
   <%= @form.google_form_url %>
 </p>
 
-<iframe src="<%= @form.google_form_url %>" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-
+<iframe src="<%= @form.google_form_url %>" 
+  width="760" height="500" frameborder="0" 
+  marginheight="0" marginwidth="0">Loading...</iframe>
 
 <p>
   <strong>Frequency:</strong>
   <%= @form.frequency %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @form.department_id %>
 </p>
 
 <%= link_to 'Edit', edit_form_path(@form) %> |
