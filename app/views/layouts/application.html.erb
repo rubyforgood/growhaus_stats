@@ -8,20 +8,7 @@
 </head>
 <body>
 
-<nav>
-  <ul>
-    <%- Department.all.each do |department| %>
-      <li>
-        <%= department.name %>
-        <ul>
-          <%- Form.where(department: department).each do |form| %>
-            <li><a href="<%= form_path(form) %>"><%= form.name %></a></li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</nav>
+<%= render 'shared/navigation' if current_user %>
 
 <%= yield %>
 
