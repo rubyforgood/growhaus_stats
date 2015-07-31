@@ -1,8 +1,11 @@
 language: ruby
 rvm:
-  - "2.2.1"
+- 2.2.1
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - bundle exec rake db:create db:migrate
+- cp config/database.yml.travis config/database.yml
+- bundle exec rake db:create db:migrate
+notifications:
+  slack:
+    secure: NBtQ3AvNoX4R/irYe1eSGP0VKOodG5rrCAumMn+RtXQ0u+X4q0YitXJn67VH2S+Jzc/WPmP6Lh8chnN0z9/98Be7SekHUbouNLZ2d4IZhY8tK9LGaaiVfmSx9Jx9yPnSG2Lg1QSz46Tt9Fj0DZAh7HUxd1TJ94uZVjUPih+XsdZ2nfeH7R1SjQZa+GHeI8SSLQwkAjizlrHLF0xZD2AGksHMN3ynJo4sRu06zWll6U8/y7AEY5j8zCBTz0PB7+y/u/ombkkdjRKsMYVOjmGcGo3pzCIKMPDnd03Az1h2dE41XX8pO+PqEslq4lhuHS92Jvr3njPD5JU61wwfoutIm6BVUs1rcyYqLUvpPSk/sXe5QjN+XsNwKUAt+57rfQVB0Vrf92OtxWSfaYGpOZOOS1vGe7VeekXk5MxX0x5dcUDR9gW8ah++OvcxNHPMEAl4x543y+3u2vkAzn0nXje05n5H1cQKAekORS3+3BV9027n676FkocJoI41wgwkLbaboIUIB7Q2LZ+SNJp7Svd/kQubHa7LCZlQlGBOx8pTMQJlpcIUXY3EMvtIwR815iROXHLG4wUZeNRAmNo2y+s5qHFTPg9fRP+eW+OOaNghamEzteIQ3HUl2YxP1TJBqPvU0T4mD4cvVh09HnG/MDJdGizR4iXpL3IhnBxgh487CMA=
