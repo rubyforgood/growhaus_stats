@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  if Rails.env == "production"
+    validates_format_of :email, with: /\A([^@\s]+)@thegrowhaus.org\z/, on: :create
+  end
+
   def self.find_or_create_from_auth(data)
     user = User.find_or_create_by(provider: data.provider, uid: data.uid)
 
