@@ -1,0 +1,6 @@
+<div>
+  <%= image_tag current_user.image_url %>
+  <h2><%= current_user.name %></h2>
+  <h2><%= current_user.email %></h2>
+  <%= link_to "Logout", logout_path, method: :delete %>
+</div>
