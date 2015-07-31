@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/rubyforgood/growhaus_stats.png?label=ready&title=Ready)](https://waffle.io/rubyforgood/growhaus_stats)
 # Growhaus Stats Tracker
 
 A statistics recording and tracking application made for the folks at [The Growhaus](http://www.thegrowhaus.org/).
