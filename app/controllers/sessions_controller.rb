@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to profile_path
     else
-      flash[:notice] = "Please sign in with your Growhaus account"
       redirect_to root_path
     end
   end
