@@ -9,8 +9,13 @@ gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "omniauth-google-oauth2"
 gem "figaro"
-
+gem "puma"
 gem "sdoc", "~> 0.4.0", group: :doc
+
+group :development do
+  gem 'capistrano',       '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1'
+end
 
 group :development, :test do
   gem "byebug"
