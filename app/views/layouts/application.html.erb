@@ -10,6 +10,8 @@
   <body>
     <%= render 'shared/navigation' if current_user %>
 
+    <%= render partial: "layouts/navbar" %>
+
     <div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
