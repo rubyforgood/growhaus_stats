@@ -1,0 +1,27 @@
+<nav>
+  <ul>
+    <%- Department.all.each do |department| %>
+      <li>
+        <%= department.name %>
+        <ul>
+          <%- Form.where(department: department).each do |form| %>
+            <li><%= link_to form.name, form_path(form) %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul>
+    <li>
+      <%= image_tag current_user.image_url %>
+      <ul>
+        <li>
+          <%= current_user.name %><br>
+          <%= current_user.email %>
+        </li>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
