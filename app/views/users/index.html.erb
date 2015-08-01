@@ -1,38 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th data-field="name">Name</th>
-      <th data-field="email">Email</th>
-      <th data-field="department">Department</th>
-      <th data-field="admin">Admin</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<%= form_tag users_path, method: :put do %>
+  <table>
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td>
-          <select class="browser-default">
-            <% if user.department %>
-              <option value="" selected><%= user.department.name %></option>
-            <% else %>
-              <option value="" selected>Select a Department</option>
-            <% end %>
-            <option value="1">Distribution</option>
-            <option value="2">Production</option>
-            <option value="3">Education</option>
-          </select>
-        </td>
-        <td>
-          <div class="switch">
-            <label> False <input type="checkbox" <%= "checked" if user.admin? %>><span class="lever"></span> True </label>
-          </div>
-        </td>
+        <th data-field="name">Name</th>
+        <th data-field="email">Email</th>
+        <th data-field="department">Department</th>
+        <th data-field="admin">Admin</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="right-align">
-  <a class="waves-effect waves-light btn">Save Changes</a>
-</div>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= select("users[#{user.id}]", :department_id, Department.all.collect { |d| [d.name, d.id] }, { include_blank: "Select a Department", selected: user.department_id }, class: "browser-default") %>
+          </td>
+          <td>
+            <div class="switch">
+              <label><%= check_box("users[#{user.id}]", :role, checked: user.admin?) %><span class="lever"></span></label>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="right-align">
+    <button type="submit" class="btn">Save Changes</button>
+  </div>
+<% end %>
