@@ -4,25 +4,25 @@
     <div class="col s12 m4">
       <div class="card-panel dashboard-panel style-0">
         <p>The GrowHaus works to provide fresh and healthy food at a low price to local residents and the greater Denver community.</p>
-        <a href="/forms?department_id=1">
+        <%= link_to forms_path(department_id:@departments.select{|d|d.name=="Distribution"}.first.id) do %>
           Distribution &gt;
-        </a>      
+        <% end %>
       </div>
     </div>
     <div class="col s12 m4">
       <div class="card-panel dashboard-panel style-1">
         <p>Our growing operations demonstrate a variety of innovative, sustainable, and community-oriented urban farming techniques.</p>
-        <a href="/forms?department_id=2">
+        <%= link_to forms_path(department_id:@departments.select{|d|d.name=="Production"}.first.id) do %>
           Production &gt;
-        </a>      
+        <% end %>
       </div>
     </div>
     <div class="col s12 m4">
       <div class="card-panel dashboard-panel style-2">
         <p>The GrowHaus aims to be a hub of learning about nutrition, gardening, cooking, and other skills for building healthy communities.</p>
-        <a href="/forms?department_id=3">
+        <%= link_to forms_path(department_id:@departments.select{|d|d.name=="Education"}.first.id) do %>
           Education &gt;
-        </a>      
+        <% end %>
       </div>
     </div>
 </div>
