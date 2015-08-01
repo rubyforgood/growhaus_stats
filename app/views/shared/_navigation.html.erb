@@ -1,51 +1,72 @@
 <nav>
-  <div class="nav-wrapper">
-    <a href="#" data-activates="slideout-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+  <div class="nav-wrapper container">
+    <a href="" data-activates="slideout-menu" class="button-collapse hide-on-large-only">
+      <i class="material-icons">menu</i>
+    </a>
+
     <ul class="hide-on-med-and-down">
+      <li>
+        <%= link_to "/", class: 'brand-logo' do %>
+          <%= image_tag("/GrowHausLogo_200.png", size: "64x45", alt: "GrowHaus Logo") %>
+        <% end %>
+      </li>
       <%- Department.all.each do |department| %>
         <li>
-          <a class="dropdown-button" href="<%=forms_path(department_id:department.id)%>" data-activates="dropdown_<%=department.name%>">
+          <%= link_to forms_path(department_id: department), class: 'dropdown-button', data: { 'activates': "dropdown_#{department.name}", beloworigin: true, constrainwidth: false } do %>
             <%= department.name %>
             <i class="material-icons right">arrow_drop_down</i>
-          </a>
-          <ul id="dropdown_<%=department.name%>" class="dropdown-content">
+          <% end %>
+          <ul id="dropdown_<%= department.name %>" class="dropdown-content">
             <%- Form.where(department: department).each do |form| %>
               <li><%= link_to form.name, form_path(form) %></li>
             <% end %>
+            <li class="divider"></li>
+            <li><%= link_to 'Manage Forms', forms_path(department_id: department) %></li>
           </ul>
         </li>
       <% end %>
-    </ul>
 
-    <ul class="side-nav" id="slideout-menu" style="color:#03A54F">
-      <li class="top-logo">
-        <a href="#" id="close-side-nav" style="display:inline"><i class="material-icons" style="display:inline">close</i></a>
-        <strong>GROWHAUS Stats</strong>
-      </li>
-      <%- Department.all.each do |department| %>
-        <li><%= link_to department.name, forms_path(department_id:department.id) %></li>
-      <% end %>
-      <li class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag("/GrowHausLogo_200.png",size:"200x140",alt:"GrowHaus Logo") %>
+      <li class="right">
+        <%= link_to "", class: 'dropdown-button', data: { 'activates': "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
+          <%= current_user.name %>
+          <i class="material-icons right">arrow_drop_down</i>
         <% end %>
-      </li>
-    </ul>
-
-    <ul class="right">
-      <li>
-        <a class="dropdown-button" href="<%=profile_path%>" data-activates="dropdown_profile" style="width:200px;">
-          <%= image_tag current_user.image_url %>
-        </a>
         <ul id="dropdown_profile" class="dropdown-content">
-          <li>
-            <%= current_user.name %><br>
-            <%= current_user.email %>
-          </li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
         </ul>
       </li>
     </ul>
 
+    <ul class="side-nav green darken-1" id="slideout-menu">
+      <li>
+        <%= link_to "/", class: 'brand-logo center-align' do %>
+          <%= image_tag("/GrowHausLogo_200.png", size: "64x45", alt: "GrowHaus Logo") %>
+        <% end %>
+      </li>
+
+      <li class="no-padding">
+        <ul class="collapsible" data-collapsible="expandable">
+          <%- Department.all.each do |department| %>
+            <li>
+              <a class="collapsible-header white-text">
+                <%= department.name %>
+                <i class="mdi-navigation-arrow-drop-down right"></i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <%- Form.where(department: department).each do |form| %>
+                    <li><%= link_to form.name, form_path(form) %></li>
+                  <% end %>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Manage Forms', forms_path(department_id: department) %></li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+
+      <li><%= link_to "Logout", logout_path, method: :delete, class: 'white-text' %></li>
+    </ul>
   </div>
 </nav>
