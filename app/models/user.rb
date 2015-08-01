@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 
   validate :accepted_email
 
+  enum role: %w(default admin)
+
   def self.find_or_initialize_from_auth(data)
     user = find_or_initialize_by(provider: data.provider, uid: data.uid)
 
