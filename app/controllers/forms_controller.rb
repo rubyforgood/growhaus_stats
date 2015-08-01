@@ -4,7 +4,12 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    @forms = Form.all
+    if params[:department]
+      @department = Department.find(params[:department])
+      @forms = Form.where(department: @department)
+    else
+      @forms = Form.all.includes(:department)
+    end
   end
 
   # GET /forms/1
@@ -14,7 +19,7 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
-    @form = Form.new
+    @form = Form.new(department_id: params[:department])
   end
 
   # GET /forms/1/edit
