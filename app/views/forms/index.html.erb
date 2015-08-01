@@ -1,6 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @department.try(:name) || "All" %> Forms</h3>
+
+
+
+<h3>
+  <%= @department.try(:name) || "All" %> Forms
+
+  <%= link_to new_form_path(department: @department) do %>
+    <small>
+      <i class="mdi-lg mdi-action-note-add"></i>
+      New Form
+    </small>
+  <% end %>
+</h3>
 
 <table>
   <thead>
@@ -38,10 +50,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to new_form_path do %>
-  <i class="mdi-lg mdi-action-note-add"></i>
-  New Form
-<% end %>

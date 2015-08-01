@@ -19,7 +19,7 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
-    @form = Form.new
+    @form = Form.new(department_id: params[:department])
   end
 
   # GET /forms/1/edit
