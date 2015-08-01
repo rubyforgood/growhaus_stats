@@ -25,7 +25,7 @@ class NotificationMailer < ApplicationMailer
     mail(to: user.email, :subject => "Data Submission Complete")
   end
 
-  def submissions_complete(user) #occurs on Wednesday
+  def submissions_complete(user, url) #occurs on Wednesday
 
     @user = user
 
