@@ -1,37 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<div class="row">
-  <div class="col s8">
-    <h3>Data Entry</h3>
-  </div>
-  <div class="col s4">
 
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='department-dropdown'>Filter Department</a>
 
-    <!-- Dropdown Structure -->
-    <ul id='department-dropdown' class='dropdown-content'>
-      <% @departments.each do |dept| %>
-        <li>
-          <%= link_to dept.name, forms_path(department_id:dept.id) %>
-        </li>
-      <% end %>
-      <li class="divider"></li>
-      <li><%= link_to "All", forms_path %></li>
-    </ul>
 
-  </div>
-  
-</div>
+<h3>
+  <%= @department.try(:name) || "All" %> Forms
 
-<table class="hoverable">
+  <%= link_to new_form_path(department: @department) do %>
+    <small>
+      <i class="mdi-lg mdi-action-note-add"></i>
+      New Form
+    </small>
+  <% end %>
+</h3>
+
+<table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Department</th>
       <th>Frequency</th>
-      <th>Last Updated</th>
-      <th colspan="2"></th>
+      <% unless @department %>
+        <th>Department</th>
+      <% end %>
+      <th colspan="2"><!-- Actions --></th>
     </tr>
   </thead>
 
@@ -39,24 +30,23 @@
     <% @forms.each do |form| %>
       <tr>
         <td><%= link_to form.name, form %></td>
-        <td><%= form.department.name %></td>
-        <td><%= form.frequency %></td>
-        <td>TODO!</td>
+        <td><%= form.frequency.titlecase %></td>
+        <% unless @department %>
+          <td><%= form.department.name %></td>
+        <% end %>
         <td>
           <%= link_to edit_form_path(form) do %>
-            <i class="material-icons">edit</i>
+            <i class="mdi-lg mdi-editor-mode-edit"></i>
+            Edit
           <% end %>
         </td>
         <td>
           <%= link_to form, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="material-icons red-text">delete</i>
+            <i class="mdi-lg mdi-action-delete"></i>
+            Delete
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Form', new_form_path, class:"btn" %>

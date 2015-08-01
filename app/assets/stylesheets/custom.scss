@@ -2,7 +2,6 @@
   padding-left: 30px;
 }
 
-
 ul.side-nav {
   background: #03A54F;
 }
@@ -31,4 +30,11 @@ ul.side-nav li:hover {
 
 ul.side-nav li.logo {
   height: 150px;
+}
+
+h3 small {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 40%;
+  margin-left: 1em;
 }
