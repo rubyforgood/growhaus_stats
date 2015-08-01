@@ -11,7 +11,7 @@ gem "omniauth-google-oauth2"
 gem "figaro"
 gem "puma"
 gem "sdoc", "~> 0.4.0", group: :doc
-gem 'premailer'
+gem 'roadie', "~> 2.4"
 gem 'whenever', :require => false
 
 group :development do
@@ -27,5 +27,5 @@ group :development, :test do
   gem "spring"
   gem "rspec-rails", "~> 3.0"
   gem 'letter_opener'
-  
+
 end

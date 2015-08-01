@@ -14,11 +14,11 @@
 # end
 #
 every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
-  runner "Task.reminds_users_of_submission"
+  rake "Task.reminds_users_of_submission"
 end
 
 every :tuesday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
-  runner "Task.reminds_users_of_late_submission"
+  rake "not_submitted_reminder"
 end
 
 # Learn more: http://github.com/javan/whenever

@@ -1,4 +1,4 @@
-task reminds_users_of_late_submission: :environment do
+task not_submitted_reminder: :environment do
 
   Department.each do | d |
       if d.name == "Distribution"
