@@ -1,17 +1,40 @@
-<% if @user && @user.errors.any? %>
-  <ul>
-    <% @user.errors.each do |_, message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 
-<p>
-  <%= link_to "Login with Google", "/auth/google_oauth2" %>
-</p>
 
-<% unless Rails.env.production? %>
+  <div class="login-logo">
+  <%= image_tag("GrowHausLogo_200.png",size:"200x140",alt:"GrowHaus Logo") %>
+  </div>
+
+  <% if @user && @user.errors.any? %>
+    <div class="card-panel blue-grey darken-4">
+    <ul>
+      <% @user.errors.each do |_, message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+  <h2><strong>GROWHAUS Stats</strong></h2>
+  <p>Login with your Google account</p>
+
   <p>
-    <%= link_to 'Login as a Developer', '/auth/developer' %>
+    <%= link_to "/auth/google_oauth2", class:"btn red" do %>       
+      Google
+    <% end %>
   </p>
-<% end %>
+
+  <% unless Rails.env.production? %>
+    <p>
+      <%= link_to 'Login as a Developer', '/auth/developer', class:"btn red" %>
+    </p>
+  <% end %>
+
+<style type="text/css">
+  html { 
+      height: 100%;
+      margin:0px;
+      background: url(<%=image_path("GrowHaus-BKG.jpg")%>) no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+  }
+</style>
