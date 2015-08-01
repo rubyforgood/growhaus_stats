@@ -22,14 +22,14 @@ class NotificationMailer < ApplicationMailer
     @forms = forms
     @user = user
 
-    mail(to: user.email, :subject => "Data Submission Complete")
+    mail(to: user.email, :subject => "Weekly Data Submissions Not Complete")
   end
 
   def submissions_complete(user, url) #occurs on Wednesday
 
     @user = user
 
-    mail(to: user.email, :subject => "Data Submission Complete")
+    mail(to: user.email, :subject => "Weekly Data Submission Complete")
   end
 
 end
