@@ -1,7 +1,0 @@
-<<<<<<< HEAD
-$(document).ready(function () {
-=======
-$( document ).ready(function() {
->>>>>>> slide out navbar, reintegrate form page styling
-  $(".button-collapse").sideNav();
-});

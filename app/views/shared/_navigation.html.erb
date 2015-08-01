@@ -17,10 +17,19 @@
       <% end %>
     </ul>
 
-    <ul class="side-nav" id="slideout-menu">
+    <ul class="side-nav" id="slideout-menu" style="color:#03A54F">
+      <li class="top-logo">
+        <a href="#" id="close-side-nav" style="display:inline"><i class="material-icons" style="display:inline">close</i></a>
+        <strong>GROWHAUS Stats</strong>
+      </li>
       <%- Department.all.each do |department| %>
         <li><%= link_to department.name, forms_path(department_id:department.id) %></li>
       <% end %>
+      <li class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag("GrowHausLogo_200.png",size:"200x140",alt:"GrowHaus Logo") %>
+        <% end %>
+      </li>
     </ul>
 
     <ul class="right">
