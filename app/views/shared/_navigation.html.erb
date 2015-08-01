@@ -1,17 +1,27 @@
 <nav>
-  <div class="nav-wrapper">
-    <a href="#" data-activates="slideout-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+  <div class="nav-wrapper container">
+    <button type="button" data-activates="slideout-menu" class="button-collapse hide-on-large-only">
+      <i class="material-icons">menu</i>
+    </button>
+
     <ul class="hide-on-med-and-down">
+      <li>
+        <%= link_to "/", class: 'brand-logo' do %>
+          <%= image_tag("GrowHausLogo_200.png", size: "64x45", alt: "GrowHaus Logo") %>
+        <% end %>
+      </li>
       <%- Department.all.each do |department| %>
         <li>
-          <a class="dropdown-button" href="<%=forms_path(department_id:department.id)%>" data-activates="dropdown_<%=department.name%>">
+          <%= link_to forms_path(department_id: department), class: 'dropdown-button', data: { 'activates': "dropdown_#{department.name}", beloworigin: true, constrainwidth: false } do %>
             <%= department.name %>
             <i class="material-icons right">arrow_drop_down</i>
-          </a>
+          <% end %>
           <ul id="dropdown_<%=department.name%>" class="dropdown-content">
             <%- Form.where(department: department).each do |form| %>
               <li><%= link_to form.name, form_path(form) %></li>
             <% end %>
+            <li class="divider"></li>
+            <li><%= link_to 'Manage Forms', forms_path(department_id: department) %></li>
           </ul>
         </li>
       <% end %>

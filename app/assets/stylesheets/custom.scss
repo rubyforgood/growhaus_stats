@@ -1,5 +1,9 @@
-.nav-wrapper .brand-logo {
-  padding-left: 30px;
+nav .brand-logo {
+  position: relative !important;
+  font-size: inherit !important;
+  img {
+    vertical-align: middle;
+  }
 }
 
 ul.side-nav {
