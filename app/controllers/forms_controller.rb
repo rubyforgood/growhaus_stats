@@ -4,8 +4,8 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    if params[:department]
-      @department = Department.find(params[:department])
+    if params[:department_id]
+      @department = Department.find(params[:department_id])
       @forms = Form.where(department: @department)
     else
       @forms = Form.all.includes(:department)
