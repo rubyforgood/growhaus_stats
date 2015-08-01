@@ -45,11 +45,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def drive_files(id = nil)
+  def drive_files(url = nil)
     files = drive_session.files
 
     if id
-      files.find { |f| /#{f.id}/ =~ id }
+      files.find { |f| /#{f.id}/ =~ url }
     else
       files
     end

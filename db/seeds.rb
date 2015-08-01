@@ -10,7 +10,11 @@ distribution = Department.find_or_create_by(name:"Distribution")
 production   = Department.find_or_create_by(name:"Production")
 education    = Department.find_or_create_by(name:"Education")
 
-Form.find_or_create_by(name:"Food Boxes", google_form_url:"https://docs.google.com/forms/d/1-hxU-Qtb9dpLfMouo3glSM4F2nDOJP6eHPOdmnjHwt0/viewform?embedded=true", frequency:'weekly', department:distribution)
+Form.find_or_create_by(name:"Food Boxes", 
+                       google_form_url:"https://docs.google.com/forms/d/1-hxU-Qtb9dpLfMouo3glSM4F2nDOJP6eHPOdmnjHwt0/viewform?embedded=true", 
+                       frequency:'weekly', 
+                       department:distribution,
+                       google_sheet_url: 'https://docs.google.com/spreadsheets/d/1pvl6YjvQRNIqyrNLvU3mVywAvUWlU0pQiCWvILfkv0Y/edit#gid=1050735829')
 Form.find_or_create_by(name:"Cosechando Salud", google_form_url:"https://docs.google.com/forms/d/1A2PzEZtSYB6oYMDMozqYLGRbQec76kg9hMYyOdtt3Lc/viewform?embedded=true", frequency:'weekly', department:distribution)
 Form.find_or_create_by(name:"Market Customers", google_form_url:"https://docs.google.com/forms/d/1BkAARsFv-p9WnkCaF7M8VaFoxNa8Qd6E0543Eb9KBfI/viewform?embedded=true", frequency:'weekly', department:distribution)
 Form.find_or_create_by(name:"Food Distribution Revenue", google_form_url:"https://docs.google.com/forms/d/16rFCfJAtdCEN3CUtULJcSAbVdztQIr6fkZ5fhRFxIik/viewform?embedded=true", frequency:'monthly', department:distribution)
