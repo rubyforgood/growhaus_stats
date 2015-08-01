@@ -24,4 +24,19 @@ RSpec.describe "User dashboard", type: :feature do
       expect(page).to have_content(user.name)
     end
   end
+
+  describe "index page" do
+    it "admin should be able to see all registered users" do
+      user = User.create!(name: "Test user", email: "test@thegrowhaus.org")
+      admin = admin_login
+      page.visit root_path
+
+      within("nav") do
+        page.click_on "Users"
+      end
+
+      expect(page).to have_content(admin.name)
+      expect(page).to have_content(user.name)
+    end
+  end
 end

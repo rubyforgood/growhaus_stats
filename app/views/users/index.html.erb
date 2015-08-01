@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="email">Email</th>
+      <th data-field="admin">Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <div class="switch">
+            <label> False <input type="checkbox" <%= "checked" if user.admin? %>><span class="lever"></span> True </label>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
