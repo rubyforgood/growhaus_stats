@@ -25,6 +25,16 @@
           </ul>
         </li>
       <% end %>
+
+      <li class="right">
+        <%= link_to "", class: 'dropdown-button', data: { 'activates': "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
+          <%= current_user.name %>
+          <i class="material-icons right">arrow_drop_down</i>
+        <% end %>
+        <ul id="dropdown_profile" class="dropdown-content">
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        </ul>
+      </li>
     </ul>
 
     <ul class="side-nav green darken-1" id="slideout-menu">
@@ -33,11 +43,30 @@
           <%= image_tag("GrowHausLogo_200.png", size: "64x45", alt: "GrowHaus Logo") %>
         <% end %>
       </li>
-      <%- Department.all.each do |department| %>
-        <li>
-          <%= link_to department.name, forms_path(department_id: department), class: 'white-text' %>
-        </li>
-      <% end %>
+
+      <li class="no-padding">
+        <ul class="collapsible" data-collapsible="expandable">
+          <%- Department.all.each do |department| %>
+            <li>
+              <a class="collapsible-header white-text">
+                <%= department.name %>
+                <i class="mdi-navigation-arrow-drop-down right"></i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <%- Form.where(department: department).each do |form| %>
+                    <li><%= link_to form.name, form_path(form) %></li>
+                  <% end %>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Manage Forms', forms_path(department_id: department) %></li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+
+      <li><%= link_to "Logout", logout_path, method: :delete, class: 'white-text' %></li>
     </ul>
   </div>
 </nav>

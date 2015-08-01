@@ -11,8 +11,14 @@ nav {
     }
   }
 
-  .side-nav li:hover {
-    background-color: rgba(#000, 0.1);
+  .side-nav {
+    li:hover, li.active {
+      background-color: rgba(#000, 0.1);
+
+      &.no-padding {
+        background-color: inherit;
+      }
+    }
   }
 }
 
