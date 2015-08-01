@@ -8,17 +8,28 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'shared/navigation' if current_user %>
 
-    <div>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-    </div>
+    <% if current_user %>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+      <%= render 'shared/navigation' %>
+
+      <div>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
+      </div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+
+    <% else # no current_user %>
+      <div class="login-container">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
 
   </body>
 </html>
