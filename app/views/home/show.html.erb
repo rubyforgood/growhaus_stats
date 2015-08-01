@@ -1,1 +1,9 @@
-<%= link_to "Login with Google", "/auth/google_oauth2" %>
+<p>
+  <%= link_to "Login with Google", "/auth/google_oauth2" %>
+</p>
+
+<% unless Rails.env.production? %>
+  <p>
+    <%= link_to 'Login as a Developer', '/auth/developer' %>
+  </p>
+<% end %>
