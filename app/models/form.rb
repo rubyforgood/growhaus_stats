@@ -17,10 +17,12 @@ class Form < ActiveRecord::Base
   belongs_to :department
   belongs_to :user
   
-  #validates :google_form_url, format: { with:    /https:\/\/google.docs.com\/forms.*/, 
-  #                                      message: 'must start with "https://google.docs.com/forms..."'  }
+  validates :google_form_url,  format: { with:    /https:\/\/docs.google.com\/forms.*/, 
+                                         message: 'must start with "https://google.docs.com/forms..."'  }
+  validates :google_sheet_url, format: { with:    /https:\/\/docs.google.com\/spreadsheet.*/, 
+                                         message: 'must start with "https://google.docs.com/spreadsheet..."'  }
 
-  def to_google_file
-    user.drive_files(google_sheet_url)
+  def to_google_sheet
+    google_sheet_url && user.drive_files(google_sheet_url)
   end
 end
