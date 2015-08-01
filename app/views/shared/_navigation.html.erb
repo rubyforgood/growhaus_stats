@@ -1,8 +1,8 @@
 <nav>
   <div class="nav-wrapper container">
-    <button type="button" data-activates="slideout-menu" class="button-collapse hide-on-large-only">
+    <a href="" data-activates="slideout-menu" class="button-collapse hide-on-large-only">
       <i class="material-icons">menu</i>
-    </button>
+    </a>
 
     <ul class="hide-on-med-and-down">
       <li>
@@ -16,7 +16,7 @@
             <%= department.name %>
             <i class="material-icons right">arrow_drop_down</i>
           <% end %>
-          <ul id="dropdown_<%=department.name%>" class="dropdown-content">
+          <ul id="dropdown_<%= department.name %>" class="dropdown-content">
             <%- Form.where(department: department).each do |form| %>
               <li><%= link_to form.name, form_path(form) %></li>
             <% end %>
@@ -27,35 +27,17 @@
       <% end %>
     </ul>
 
-    <ul class="side-nav" id="slideout-menu" style="color:#03A54F">
-      <li class="top-logo">
-        <a href="#" id="close-side-nav" style="display:inline"><i class="material-icons" style="display:inline">close</i></a>
-        <strong>GROWHAUS Stats</strong>
-      </li>
-      <%- Department.all.each do |department| %>
-        <li><%= link_to department.name, forms_path(department_id:department.id) %></li>
-      <% end %>
-      <li class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag("GrowHausLogo_200.png",size:"200x140",alt:"GrowHaus Logo") %>
+    <ul class="side-nav green darken-1" id="slideout-menu">
+      <li>
+        <%= link_to "/", class: 'brand-logo center-align' do %>
+          <%= image_tag("GrowHausLogo_200.png", size: "64x45", alt: "GrowHaus Logo") %>
         <% end %>
       </li>
+      <%- Department.all.each do |department| %>
+        <li>
+          <%= link_to department.name, forms_path(department_id: department), class: 'white-text' %>
+        </li>
+      <% end %>
     </ul>
-
-    <ul class="right">
-      <li>
-        <a class="dropdown-button" href="<%=profile_path%>" data-activates="dropdown_profile" style="width:200px;">
-          <%= image_tag current_user.image_url %>
-        </a>
-        <ul id="dropdown_profile" class="dropdown-content">
-          <li>
-            <%= current_user.name %><br>
-            <%= current_user.email %>
-          </li>
-          <li><%= link_to "Logout", logout_path, method: :delete %></li>
-        </ul>
-      </li>
-    </ul>
-
   </div>
 </nav>

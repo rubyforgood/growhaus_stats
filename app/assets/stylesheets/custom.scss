@@ -1,39 +1,19 @@
-nav .brand-logo {
-  position: relative !important;
-  font-size: inherit !important;
-  img {
-    vertical-align: middle;
+nav {
+  .button-collapse {
+    margin-right: 1em;
   }
-}
 
-ul.side-nav {
-  background: #03A54F;
-}
+  .brand-logo {
+    position: relative !important;
+    font-size: inherit !important;
+    img {
+      vertical-align: middle;
+    }
+  }
 
-ul.side-nav li {
-  padding-left: 40px;
-}
-
-ul.side-nav li.top-logo  {
-  color: #fff;
-  padding-left:0px;
-  vertical-align:middle;
-}
-
-ul.side-nav li.top-logo a {
-  display:inline;
-}
-
-ul.side-nav a {
-  color: #fff;
-}
-
-ul.side-nav li:hover {
-  background: rgb(69, 39, 160);
-}
-
-ul.side-nav li.logo {
-  height: 150px;
+  .side-nav li:hover {
+    background-color: rgba(#000, 0.1);
+  }
 }
 
 h3 small {
