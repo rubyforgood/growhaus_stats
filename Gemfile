@@ -28,4 +28,7 @@ group :development, :test do
   gem "spring"
   gem "rspec-rails", "~> 3.0"
   gem "letter_opener"
+  gem "capybara"
+  gem "webmock"
+  gem "launchy"
 end
