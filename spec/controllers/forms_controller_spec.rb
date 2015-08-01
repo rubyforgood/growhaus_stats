@@ -19,6 +19,9 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe FormsController, type: :controller do
+  let(:user) { User.create(email: 'test@thegrowhaus.org') }
+
+  after(:each) { User.destroy_all }
 
   # This should return the minimal set of attributes required to create a valid
   # Form. As you add validations to Form, be sure to
@@ -34,7 +37,7 @@ RSpec.describe FormsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # FormsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {user_id: user.id} }
 
   describe "GET #index" do
     it "assigns all forms as @forms" do

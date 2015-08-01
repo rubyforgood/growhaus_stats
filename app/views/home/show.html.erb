@@ -1,3 +1,11 @@
+<% if @user && @user.errors.any? %>
+  <ul>
+    <% @user.errors.each do |_, message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <p>
   <%= link_to "Login with Google", "/auth/google_oauth2" %>
 </p>

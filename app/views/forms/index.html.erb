@@ -1,33 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Forms</h1>
+
+
+
+<h3>
+  <%= @department.try(:name) || "All" %> Forms
+
+  <%= link_to new_form_path(department: @department) do %>
+    <small>
+      <i class="mdi-lg mdi-action-note-add"></i>
+      New Form
+    </small>
+  <% end %>
+</h3>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Google form url</th>
       <th>Frequency</th>
-      <th>Department</th>
-      <th colspan="3"></th>
+      <% unless @department %>
+        <th>Department</th>
+      <% end %>
+      <th colspan="2"><!-- Actions --></th>
     </tr>
   </thead>
 
   <tbody>
     <% @forms.each do |form| %>
       <tr>
-        <td><%= form.name %></td>
-        <td><%= form.google_form_url %></td>
-        <td><%= form.frequency %></td>
-        <td><%= form.department_id %></td>
-        <td><%= link_to 'Show', form %></td>
-        <td><%= link_to 'Edit', edit_form_path(form) %></td>
-        <td><%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to form.name, form %></td>
+        <td><%= form.frequency.titlecase %></td>
+        <% unless @department %>
+          <td><%= form.department.name %></td>
+        <% end %>
+        <td>
+          <%= link_to edit_form_path(form) do %>
+            <i class="mdi-lg mdi-editor-mode-edit"></i>
+            Edit
+          <% end %>
+        </td>
+        <td>
+          <%= link_to form, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="mdi-lg mdi-action-delete"></i>
+            Delete
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Form', new_form_path %>
