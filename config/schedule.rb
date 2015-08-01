@@ -17,8 +17,12 @@ every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
   rake "weekly_submission_reminder"
 end
 
-every :tuesday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
-  rake "not_submitted_reminder"
+# every :tuesday, :at => '11am' do # Use any day of the week or :weekend, :weekday
+#   rake "not_submitted_reminder"
+# end
+
+every :wednesday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
+  rake "submissions_complete"
 end
 
 # Learn more: http://github.com/javan/whenever

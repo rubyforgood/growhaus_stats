@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Please complete your weekly data submissions.</title>
+<title>Weekly Submissions Complete.</title>
 <style type="text/css">
   /* -------------------------------------
       GLOBAL
@@ -230,8 +230,8 @@
       <div class="content">
         <table class="main" width="100%" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="alert alert-warning">
-              <%= @user.name%>, please log into the <%= @user.department %> site and complete your weekly data submission.
+            <td class="alert alert-good">
+              <%= @user.name%>, submissions are complete.
             </td>
           </tr>
           <tr>
@@ -239,12 +239,12 @@
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    Your submissions is needed by Wednesday morning.
+                    You can find this week's data submissions here:
                   </td>
                 </tr>
                 <tr>
                   <td class="content-block">
-                    <a href=<%= @url %> class="btn-primary">Click here to submit</a>
+                    <a href=<%= @url %> class="btn-primary">Click here to view</a>
                   </td>
                 </tr>
               </table>
