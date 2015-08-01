@@ -1,9 +1,10 @@
 <nav>
   <div class="nav-wrapper">
-    <ul>
+    <a href="#" data-activates="slideout-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="hide-on-med-and-down">
       <%- Department.all.each do |department| %>
         <li>
-          <a class="dropdown-button" href="#!" data-activates="dropdown_<%=department.name%>">
+          <a class="dropdown-button" href="<%=forms_path(department_id:department.id)%>" data-activates="dropdown_<%=department.name%>">
             <%= department.name %>
             <i class="material-icons right">arrow_drop_down</i>
           </a>
@@ -16,10 +17,18 @@
       <% end %>
     </ul>
 
-    <ul>
+    <ul class="side-nav" id="slideout-menu">
+      <%- Department.all.each do |department| %>
+        <li><%= link_to department.name, forms_path(department_id:department.id) %></li>
+      <% end %>
+    </ul>
+
+    <ul class="right">
       <li>
-        <%= image_tag current_user.image_url %>
-        <ul>
+        <a class="dropdown-button" href="<%=profile_path%>" data-activates="dropdown_profile" style="width:200px;">
+          <%= image_tag current_user.image_url %>
+        </a>
+        <ul id="dropdown_profile" class="dropdown-content">
           <li>
             <%= current_user.name %><br>
             <%= current_user.email %>
@@ -28,5 +37,6 @@
         </ul>
       </li>
     </ul>
+
   </div>
 </nav>
