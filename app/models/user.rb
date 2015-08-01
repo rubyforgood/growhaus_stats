@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
                       'kmanuel09@gmail.com']
 
   validate :accepted_email
+  belongs_to :department
 
   enum role: %w(default admin)
 
