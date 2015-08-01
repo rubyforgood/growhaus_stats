@@ -33,7 +33,7 @@ def mock_omniauth_user
     "uid"      => "123456",
     "info" => {
       "name"  => "mock_user",
-      "email" => "email@example.com",
+      "email" => "email@thegrowhaus.org",
       "image" => "mock_user_thumbnail_url"
     },
     "credentials" => {

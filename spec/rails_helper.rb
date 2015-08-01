@@ -61,7 +61,7 @@ def admin_login
   page.visit root_path
   data = mock_omniauth_user
   page.click_on("Login with Google")
-  user = User.find_or_create_from_auth(data)
+  user = User.find_or_initialize_from_auth(data)
   user.role = "admin"
   user.save!
 
@@ -76,7 +76,7 @@ def mock_omniauth_user
     "uid"      => "123456",
     "info" => {
       "name"  => "mock_user",
-      "email" => "email@example.com",
+      "email" => "email@thegrowhaus.org",
       "image" => "mock_user_thumbnail_url"
     },
     "credentials" => {
