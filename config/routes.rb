@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :forms
   get "/profile", to: "profiles#show"
   match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
-  delete "/logout", to: "sessions#destroy"
+  match "/logout", to: "sessions#destroy", via: [:get, :delete]
 end
