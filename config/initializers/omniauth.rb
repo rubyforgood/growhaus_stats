@@ -11,8 +11,11 @@ unless Rails.env.production?
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :developer unless Rails.env.production?
-  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+  provider(:developer) unless Rails.env.production?
+  provider(:google_oauth2,
+           ENV["GOOGLE_CLIENT_ID"],
+           ENV["GOOGLE_CLIENT_SECRET"],
+           scope: ['email', 'profile', 'drive.readonly', 'https://spreadsheets.google.com/feeds/'])
 end
 
 OmniAuth.config.logger = Rails.logger
