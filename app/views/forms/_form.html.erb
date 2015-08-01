@@ -21,13 +21,14 @@
   </div>
   <div class="field">
     <%= f.label :frequency %><br>
-    <%= f.text_field :frequency %>
+    <%= f.select :frequency, ['weekly'] %>
   </div>
   <div class="field">
     <%= f.label :department_id %><br>
     <%= f.collection_select(:department_id, Department.all, :id, :name) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class:"btn" %>
+    <%= link_to 'Cancel', forms_path, class:'btn red' %>
   </div>
 <% end %>
