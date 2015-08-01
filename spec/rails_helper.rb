@@ -50,3 +50,37 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def login_with_omniauth
+  page.visit root_path
+  mock_omniauth_user
+  page.click_on("Login with Google")
+end
+
+def admin_login
+  page.visit root_path
+  data = mock_omniauth_user
+  page.click_on("Login with Google")
+  user = User.find_or_create_from_auth(data)
+  user.role = "admin"
+  user.save!
+
+  user
+end
+
+private
+
+def mock_omniauth_user
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    "provider" => "google_oauth2",
+    "uid"      => "123456",
+    "info" => {
+      "name"  => "mock_user",
+      "email" => "email@example.com",
+      "image" => "mock_user_thumbnail_url"
+    },
+    "credentials" => {
+      "token"  => "mock_token"
+    }
+  })
+end
