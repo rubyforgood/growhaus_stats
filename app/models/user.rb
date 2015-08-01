@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
                       'i@austinwood.me',
                       'adunkman@gmail.com',
                       'bengmorris@gmail.com',
-                      'riley@thegrowhaus.org']
+                      'riley@thegrowhaus.org',
+                      'kmanuel09@gmail.com']
 
   validate :accepted_email
 
