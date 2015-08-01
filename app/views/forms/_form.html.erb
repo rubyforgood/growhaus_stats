@@ -29,6 +29,12 @@
       <%= f.label :google_form_url, 'URL to Google Form' %>
     </div>
   </div>
+    <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :google_sheet_url, placeholder: 'https://docs.google.com/spreadsheets/d/…' %>
+      <%= f.label :google_sheet_url, 'URL to Google Reporting Sheet' %>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit "Save", class:"btn" %>
     <%= link_to 'Cancel', forms_path, class:'btn red' %>
