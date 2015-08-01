@@ -11,21 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      <%= f.text_field :name %>
+      <%= f.label :name %>
+    </div>
+    <div class="input-field col s6 m3">
+      <%= f.select :frequency, [[:Weekly, :weekly], [:Monthly, :monthly]], {}, class: 'browser-default' %>
+    </div>
+    <div class="input-field col s6 m3">
+      <%= f.collection_select(:department_id, Department.all, :id, :name, {}, class: 'browser-default') %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :google_form_url %><br>
-    <%= f.text_field :google_form_url %>
-  </div>
-  <div class="field">
-    <%= f.label :frequency %><br>
-    <%= f.select :frequency, ['weekly'] %>
-  </div>
-  <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.collection_select(:department_id, Department.all, :id, :name) %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :google_form_url, placeholder: 'https://docs.google.com/forms/d/…' %>
+      <%= f.label :google_form_url, 'URL to Google Form' %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit "Save", class:"btn" %>
