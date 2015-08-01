@@ -2,7 +2,7 @@
   <ul>
     <%- Department.all.each do |department| %>
       <li>
-        <%= department.name %>
+        <%= link_to department.name, forms_path(department: department) %>
         <ul>
           <%- Form.where(department: department).each do |form| %>
             <li><%= link_to form.name, form_path(form) %></li>
