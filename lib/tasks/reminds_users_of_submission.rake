@@ -1,4 +1,4 @@
-task reminds_users_of_submission: :environment do
+task weekly_submission_reminder: :environment do
 
   Department.each do | d |
       if d.name == "Distribution"

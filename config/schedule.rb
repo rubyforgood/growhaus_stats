@@ -14,7 +14,7 @@
 # end
 #
 every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
-  rake "Task.reminds_users_of_submission"
+  rake "weekly_submission_reminder"
 end
 
 every :tuesday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
