@@ -1,6 +1,6 @@
 task weekly_submission_reminder: :environment do
 
-  Department.each do | d |
+  Department.all.each do | d |
       if d.name == "Distribution"
         url = "http://entercorrecturl.distribution.com"
       elsif d.name == "Production"
