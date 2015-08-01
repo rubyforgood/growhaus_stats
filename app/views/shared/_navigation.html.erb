@@ -1,27 +1,51 @@
 <nav>
-  <ul>
-    <%- Department.all.each do |department| %>
+  <div class="nav-wrapper">
+    <a href="#" data-activates="slideout-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="hide-on-med-and-down">
+      <%- Department.all.each do |department| %>
+        <li>
+          <a class="dropdown-button" href="<%=forms_path(department_id:department.id)%>" data-activates="dropdown_<%=department.name%>">
+            <%= department.name %>
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+          <ul id="dropdown_<%=department.name%>" class="dropdown-content">
+            <%- Form.where(department: department).each do |form| %>
+              <li><%= link_to form.name, form_path(form) %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="side-nav" id="slideout-menu" style="color:#03A54F">
+      <li class="top-logo">
+        <a href="#" id="close-side-nav" style="display:inline"><i class="material-icons" style="display:inline">close</i></a>
+        <strong>GROWHAUS Stats</strong>
+      </li>
+      <%- Department.all.each do |department| %>
+        <li><%= link_to department.name, forms_path(department_id:department.id) %></li>
+      <% end %>
+      <li class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag("GrowHausLogo_200.png",size:"200x140",alt:"GrowHaus Logo") %>
+        <% end %>
+      </li>
+    </ul>
+
+    <ul class="right">
       <li>
-        <%= link_to department.name, forms_path(department: department) %>
-        <ul>
-          <%- Form.where(department: department).each do |form| %>
-            <li><%= link_to form.name, form_path(form) %></li>
-          <% end %>
+        <a class="dropdown-button" href="<%=profile_path%>" data-activates="dropdown_profile" style="width:200px;">
+          <%= image_tag current_user.image_url %>
+        </a>
+        <ul id="dropdown_profile" class="dropdown-content">
+          <li>
+            <%= current_user.name %><br>
+            <%= current_user.email %>
+          </li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
         </ul>
       </li>
-    <% end %>
-  </ul>
+    </ul>
 
-  <ul>
-    <li>
-      <%= image_tag current_user.image_url %>
-      <ul>
-        <li>
-          <%= current_user.name %><br>
-          <%= current_user.email %>
-        </li>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
-      </ul>
-    </li>
-  </ul>
+  </div>
 </nav>
