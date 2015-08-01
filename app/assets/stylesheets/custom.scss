@@ -28,3 +28,63 @@ h3 small {
   font-size: 40%;
   margin-left: 1em;
 }
+
+/* LOGIN PAGE */
+
+div.login-container {
+  padding-top: 10em;
+  text-align: center;
+  color: #fff
+}
+
+div.login-logo {
+  padding-bottom: 2em;
+}
+
+
+
+/* DASHBOARD */
+
+div.dashboard-panel {
+  color:#fff;
+}
+
+div.dashboard-panel.style-0 {
+  background-color:rgba(127,184,68,0.9) !important;
+}
+
+div.dashboard-panel.style-1 {
+  background-color:rgba(0,150,136,0.9) !important;
+}
+
+div.dashboard-panel.style-2 {
+  background-color:rgba(231,108,41,0.9) !important;
+}
+
+div.dashboard-panel.style-3 {
+  background-color:rgba(205,201,215,0.9) !important;
+}
+
+div.dashboard-panel.style-4 {
+  background-color:rgba(104,85,36,0.9) !important;
+}
+
+.dashboard-panel a {
+  color:#fff;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.dashboard-activity-head {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: rgb(69, 39, 160);
+}
+
+.dashboard-activity-subhead {
+  font-weight: bold;
+  color: rgb(127,184,68);
+  margin-bottom:20px;
+}
