@@ -1,13 +1,14 @@
 <%= form_for(@form) do |f| %>
   <% if @form.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h2>
-
-      <ul>
-      <% @form.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title"><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</span>
+        <ul>
+          <% @form.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -25,7 +26,7 @@
   </div>
   <div class="row">
     <div class="input-field col s12">
-      <%= f.text_field :google_form_url, placeholder: 'https://docs.google.com/forms/d/…', class: "validate"%>
+      <%= f.text_field :google_form_url, placeholder: 'https://docs.google.com/forms/d/…'%>
       <%= f.label :google_form_url, 'URL to Google Form' %>
     </div>
   </div>
