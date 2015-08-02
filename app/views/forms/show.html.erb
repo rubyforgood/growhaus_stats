@@ -12,6 +12,12 @@
       Last Updated:
       <strong class="red-text"><%= @form.last_updated %></strong>
     </p>
+    <% if @form.google_sheet_url %>
+      <%= link_to(@form.google_sheet_url, target: '_blank') do %>
+        <i class="mdi-lg mdi-action-open-in-new"></i>
+        View Entered Data
+      <% end %>
+    <% end %>
   </div>
 </div>
 
