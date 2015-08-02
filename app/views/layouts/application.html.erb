@@ -26,6 +26,10 @@
         <%= yield %>
       </div>
 
+      <% if content_for?(:no_container) %>
+        <%= yield :no_container %>
+      <% end %>
+
     <% else # no current_user %>
       <div class="login-container">
         <div class="container">
