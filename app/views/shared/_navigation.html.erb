@@ -1,7 +1,7 @@
 <nav>
   <div class="nav-wrapper container">
     <a href="" data-activates="slideout-menu" class="button-collapse hide-on-large-only">
-      <i class="material-icons">menu</i>
+      <i class="mdi mdi-navigation-menu"></i>
     </a>
 
     <ul class="hide-on-med-and-down">
@@ -14,7 +14,7 @@
         <li>
           <%= link_to forms_path(department_id: department), class: 'dropdown-button', data: { 'activates': "dropdown_#{department.name}", beloworigin: true, constrainwidth: false } do %>
             <%= department.name %>
-            <i class="material-icons right">arrow_drop_down</i>
+            <i class="mdi mdi-navigation-arrow-drop-down right"></i>
           <% end %>
           <ul id="dropdown_<%= department.name %>" class="dropdown-content">
             <%- Form.where(department: department).each do |form| %>
@@ -29,7 +29,7 @@
       <li class="right">
         <%= link_to "", class: 'dropdown-button', data: { 'activates': "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
           <%= current_user.name %>
-          <i class="material-icons right">arrow_drop_down</i>
+          <i class="mdi mdi-navigation-arrow-drop-down right"></i>
         <% end %>
         <ul id="dropdown_profile" class="dropdown-content">
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
