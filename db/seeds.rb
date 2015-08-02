@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-distribution = Department.find_or_create_by(name: distribution)
-production   = Department.find_or_create_by(name: production)
-education    = Department.find_or_create_by(name: education)
+distribution = Department.find_or_create_by(name: 'Distribution')
+production   = Department.find_or_create_by(name: 'Production')
+education    = Department.find_or_create_by(name: 'Education')
 
 food_boxes = Form.find_or_initialize_by(name: 'Food Boxes')
 
