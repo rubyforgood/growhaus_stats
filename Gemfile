@@ -11,12 +11,15 @@ gem "omniauth-google-oauth2"
 gem "puma"
 gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
+gem 'roadie', "~> 2.4"
+gem 'whenever', :require => false
 gem "google_drive"
 
 group :development do
   gem 'annotate'
   gem 'capistrano',       '~> 3.4.0'
   gem 'capistrano-rails', '~> 1.1'
+
 end
 
 group :development, :test do
@@ -25,4 +28,6 @@ group :development, :test do
   gem "web-console", "~> 2.0"
   gem "spring"
   gem "rspec-rails", "~> 3.0"
+  gem 'letter_opener'
+
 end

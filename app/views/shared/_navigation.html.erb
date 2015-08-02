@@ -12,7 +12,7 @@
       </li>
       <%- Department.all.each do |department| %>
         <li>
-          <%= link_to forms_path(department_id: department), class: 'dropdown-button', data: { 'activates': "dropdown_#{department.name}", beloworigin: true, constrainwidth: false } do %>
+          <%= link_to forms_path(department_id: department), class: 'dropdown-button', data: { activates: "dropdown_#{department.name}", beloworigin: true, constrainwidth: false } do %>
             <%= department.name %>
             <i class="mdi mdi-navigation-arrow-drop-down right"></i>
           <% end %>
@@ -27,7 +27,7 @@
       <% end %>
 
       <li class="right">
-        <%= link_to "", class: 'dropdown-button', data: { 'activates': "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
+        <%= link_to "", class: 'dropdown-button', data: { activates: "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
           <%= current_user.name %>
           <i class="mdi mdi-navigation-arrow-drop-down right"></i>
         <% end %>
