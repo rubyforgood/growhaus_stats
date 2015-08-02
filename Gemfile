@@ -13,8 +13,10 @@ gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem 'roadie', "~> 2.4"
 gem 'whenever', :require => false
+gem "google_drive"
 
 group :development do
+  gem 'annotate'
   gem 'capistrano',       '~> 3.4.0'
   gem 'capistrano-rails', '~> 1.1'
 

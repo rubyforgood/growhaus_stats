@@ -1,9 +1,27 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  email       :string
+#  image_url   :string
+#  account_url :string
+#  provider    :string
+#  token       :string
+#  uid         :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class User < ActiveRecord::Base
   EXCEPTION_EMAILS = ['brice@optoro.com',
+                      'brice84@gmail.com',
                       'i@austinwood.me',
                       'adunkman@gmail.com',
                       'bengmorris@gmail.com',
-                      'riley@thegrowhaus.org']
+                      'riley@thegrowhaus.org',
+                      'kmanuel09@gmail.com']
 
   validate :accepted_email
 
@@ -25,5 +43,21 @@ class User < ActiveRecord::Base
     if email !~ /\A([^@\s]+)@thegrowhaus.org\z/ && !EXCEPTION_EMAILS.include?(email)
       errors.add(:email, 'Invalid email.')
     end
+  end
+
+  def drive_files(url = nil)
+    files = drive_session.files
+
+    if id
+      files.find { |f| /#{f.id}/ =~ url }
+    else
+      files
+    end
+  end
+
+  private
+
+  def drive_session
+    @drive_session ||= GoogleDrive.login_with_oauth(token)
   end
 end

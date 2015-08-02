@@ -1,16 +1,12 @@
-setupNav = function(){
-  $(".button-collapse").sideNav({
-    menuWidth: 300
+(function () {
+  var setupNav = function () {
+    $(".button-collapse").sideNav({
+      menuWidth: 300
+    });
+  };
+
+  $(document).on({
+    "ready": setupNav,
+    "page:load": setupNav
   });
-  $("#close-side-nav").click(function(){
-    $('.button-collapse').sideNav('hide');
-  })
-};
-
-$( document ).ready(function() {
-  setupNav();
-});
-
-$(document).on('page:load', function () {
-  setupNav();
-});
+})();

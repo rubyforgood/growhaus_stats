@@ -4,8 +4,8 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    if params[:department]
-      @department = Department.find(params[:department])
+    if params[:department_id]
+      @department = Department.find(params[:department_id])
       @forms = Form.where(department: @department)
     else
       @forms = Form.all.includes(:department)
@@ -74,6 +74,6 @@ class FormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
-      params.require(:form).permit(:name, :google_form_url, :frequency, :department_id)
+      params.require(:form).permit(:name, :google_form_url, :google_sheet_url, :frequency, :department_id)
     end
 end
