@@ -23,6 +23,18 @@ class Form < ActiveRecord::Base
                                          message: 'must start with "https://google.docs.com/spreadsheet..."'  }
 
   attr_reader :google_sheet
+  
+  def self.with_revenue
+    where("name ~* 'revenue'")
+  end
+
+  def columns
+    @columns ||= to_worksheet.rows.first
+  end
+
+  def data
+    to_worksheet.rows[1..-1]
+  end
 
   def gid
     @gid ||= google_sheet_url.to_s.split('gid=').last
@@ -37,6 +49,23 @@ class Form < ActiveRecord::Base
     end
   rescue
     nil
+  end
+
+  def revenue(last = 4)
+    result    = []
+    data_rows = data[last * -1, last]
+
+    data_rows.each do |row|
+      hash   = Hash[columns.zip(row)]
+      date   = hash.find { |i, _| i =~ /month/i }.last
+      amount = hash.select { |i, _| i =~ /(revenue|amount)/i }.values.reduce { |i, j| i.to_f + j.to_f }
+      
+      result << [date, amount]
+    end
+
+    result
+  rescue 
+    Array.new(last) { [] }
   end
 
   def to_worksheet
