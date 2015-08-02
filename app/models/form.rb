@@ -16,14 +16,14 @@
 class Form < ActiveRecord::Base
   belongs_to :department
   belongs_to :user
-  
-  validates :google_form_url,  format: { with:    /https:\/\/docs.google.com\/forms.*/, 
-                                         message: 'must start with "https://google.docs.com/forms..."'  }
-  validates :google_sheet_url, format: { with:    /https:\/\/docs.google.com\/spreadsheet.*/, 
-                                         message: 'must start with "https://google.docs.com/spreadsheet..."'  }
+
+  validates :google_form_url,  format: { with:    /https:\/\/docs.google.com\/forms.*/,
+                                         message: 'must start with "https://docs.google.com/forms..."'  }
+  validates :google_sheet_url, format: { with:    /https:\/\/docs.google.com\/spreadsheet.*/,
+                                         message: 'must start with "https://docs.google.com/spreadsheet..."'  }
 
   attr_reader :google_sheet
-  
+
   def self.with_revenue
     where("name ~* 'revenue'")
   end
@@ -59,12 +59,12 @@ class Form < ActiveRecord::Base
       hash   = Hash[columns.zip(row)]
       date   = hash.find { |i, _| i =~ /month/i }.last
       amount = hash.select { |i, _| i =~ /(revenue|amount)/i }.values.reduce { |i, j| i.to_f + j.to_f }
-      
+
       result << [date, amount]
     end
 
     result
-  rescue 
+  rescue
     Array.new(last) { [] }
   end
 
