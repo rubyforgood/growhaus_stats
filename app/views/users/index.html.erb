@@ -1,0 +1,31 @@
+<%= form_tag users_path, method: :put do %>
+  <table>
+    <thead>
+      <tr>
+        <th data-field="name">Name</th>
+        <th data-field="email">Email</th>
+        <th data-field="department">Department</th>
+        <th data-field="admin">Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= select("users[#{user.id}]", :department_id, Department.all.collect { |d| [d.name, d.id] }, { include_blank: "Select a Department", selected: user.department_id }, class: "browser-default") %>
+          </td>
+          <td>
+            <div class="switch">
+              <label><%= check_box("users[#{user.id}]", :role, checked: user.admin?) %><span class="lever"></span></label>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="right-align">
+    <button type="submit" class="btn">Save Changes</button>
+  </div>
+<% end %>

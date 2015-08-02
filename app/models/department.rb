@@ -10,4 +10,5 @@
 
 class Department < ActiveRecord::Base
   has_many :forms
+  has_many :users
 end

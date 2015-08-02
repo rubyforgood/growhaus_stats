@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
                       'kmanuel09@gmail.com']
 
   validate :accepted_email
+  belongs_to :department
+
+  enum role: %w(default admin)
 
   def self.find_or_initialize_from_auth(data)
     user = find_or_initialize_by(provider: data.provider, uid: data.uid)
@@ -42,6 +45,12 @@ class User < ActiveRecord::Base
   def accepted_email
     if email !~ /\A([^@\s]+)@thegrowhaus.org\z/ && !EXCEPTION_EMAILS.include?(email)
       errors.add(:email, 'Invalid email.')
+    end
+  end
+
+  def at_least_one_admin
+    if User.where(role: 1).count < 1
+      raise ActiveRecord::Rollback
     end
   end
 
