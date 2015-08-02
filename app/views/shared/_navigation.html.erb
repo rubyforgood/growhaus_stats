@@ -28,7 +28,6 @@
       <% if current_user.admin? %>
         <li><%= link_to "Users", users_path %></li>
       <% end %>
-    </ul>
 
       <li class="right">
         <%= link_to "", class: 'dropdown-button', data: { 'activates': "dropdown_profile", beloworigin: true, constrainwidth: false } do %>
