@@ -22,7 +22,25 @@ class Form < ActiveRecord::Base
   validates :google_sheet_url, format: { with:    /https:\/\/docs.google.com\/spreadsheet.*/, 
                                          message: 'must start with "https://google.docs.com/spreadsheet..."'  }
 
-  def to_google_sheet
-    google_sheet_url && user.drive_files(google_sheet_url)
+  attr_reader :google_sheet
+
+  def gid
+    @gid ||= google_sheet_url.to_s.split('gid=').last
+  end
+
+  def to_worksheet
+    if google_sheet
+      @worksheet ||= google_sheet.worksheets.find do |worksheet|
+        worksheet.gid == gid
+      end
+    end
+  end
+
+  private
+
+  def google_sheet
+    if user && google_sheet_url
+      @google_sheet ||= user.drive_files(google_sheet_url)
+    end
   end
 end
