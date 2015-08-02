@@ -32,6 +32,8 @@ class Form < ActiveRecord::Base
     if to_worksheet && to_worksheet.rows.length > 1
       timestamp_index = to_worksheet.rows.first.index('Timestamp')
       @last_updated ||= to_worksheet.rows.last[timestamp_index]
+    elsif to_worksheet
+      to_worksheet.updated
     end
   rescue
     nil
