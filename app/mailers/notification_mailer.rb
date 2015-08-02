@@ -7,13 +7,6 @@ class NotificationMailer < ApplicationMailer
     mail(to: user.email, :subject => "Weekly Data Submission Reminder")
   end
 
-  def not_submitted_reminder(user) #occurs on Tuesday at noon
-
-    @user = user
-
-    mail(to: user.email, :subject => "Weekly Data Submission Reminder, Part 2")
-  end
-
   def forms_not_complete(user, forms, departments) #occurs on Wednesday
 
     @departments = departments
