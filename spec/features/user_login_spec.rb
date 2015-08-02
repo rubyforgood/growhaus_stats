@@ -11,7 +11,7 @@ RSpec.describe "Unauthenticated user", type: :feature do
     page.visit root_path
     user = mock_omniauth_user
     expect(page).not_to have_content(user.info.name)
-    page.click_on("Login with Google")
+    page.click_on("Google")
 
     expect(page).to have_content(user.name)
     expect(page).to have_content(user.email)
@@ -19,8 +19,8 @@ RSpec.describe "Unauthenticated user", type: :feature do
 
   it "can logout if logged in" do
     page.visit root_path
-    page.click_on("Login with Google")
-    within("nav") do
+    page.click_on("Google")
+    within(".hide-on-med-and-down") do
       page.click_on("Logout")
     end
 

@@ -18,13 +18,13 @@ end
 def login_with_omniauth
   page.visit root_path
   mock_omniauth_user
-  page.click_on("Login with Google")
+  page.click_on("Google")
 end
 
 def admin_login
   page.visit root_path
   data = mock_omniauth_user
-  page.click_on("Login with Google")
+  page.click_on("Google")
   user = User.find_or_initialize_from_auth(data)
   user.role = "admin"
   user.save!

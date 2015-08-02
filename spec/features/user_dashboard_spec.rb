@@ -17,7 +17,7 @@ RSpec.describe "User dashboard", type: :feature do
       login_with_omniauth
       page.visit users_path
 
-      expect(page.current_path).to eq(root_path)
+      expect(page.current_path).to eq(dashboard_path)
     end
 
     it "admin should be able to view the user dashboard" do
@@ -35,7 +35,7 @@ RSpec.describe "User dashboard", type: :feature do
       admin = admin_login
       page.visit root_path
 
-      within("nav") do
+      within(".hide-on-med-and-down") do
         page.click_on "Users"
       end
 
