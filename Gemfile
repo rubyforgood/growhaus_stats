@@ -12,6 +12,8 @@ gem "puma"
 gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "google_drive"
+gem "roadie", "~> 2.4"
+gem "whenever", require: false
 
 group :development do
   gem 'annotate'
@@ -25,4 +27,5 @@ group :development, :test do
   gem "web-console", "~> 2.0"
   gem "spring"
   gem "rspec-rails", "~> 3.0"
+  gem "letter_opener"
 end
