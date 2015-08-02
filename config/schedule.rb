@@ -1,12 +1,12 @@
 # Use this file to easily define all of your cron jobs.
 
 # weekly reminder email
-every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
+every :monday, :at => '10am' do
   rake "weekly_submission_reminder"
 end
 
 # email to identify incomplete forms, if it were possible
-# every :tuesday, :at => '11am' do # Use any day of the week or :weekend, :weekday
+# every :tuesday, :at => '11am' do
 #   rake "forms_not_complete"
 # end
 
