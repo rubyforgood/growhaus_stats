@@ -5,9 +5,9 @@ every :monday, :at => '10am' do # Use any day of the week or :weekend, :weekday
   rake "weekly_submission_reminder"
 end
 
-# second reminder email, used if it was possible to identify unfilled forms and their owners
+# email to identify incomplete forms, if it were possible
 # every :tuesday, :at => '11am' do # Use any day of the week or :weekend, :weekday
-#   rake "not_submitted_reminder"
+#   rake "forms_not_complete"
 # end
 
 # completion email to be sent to the superusers/admin
