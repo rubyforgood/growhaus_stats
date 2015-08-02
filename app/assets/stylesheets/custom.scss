@@ -1,3 +1,7 @@
+body, html, .full-height {
+  height: 100%;
+}
+
 nav {
   .button-collapse {
     margin-right: 1em;
@@ -28,19 +32,6 @@ h3 small {
   font-size: 40%;
   margin-left: 1em;
 }
-
-/* LOGIN PAGE */
-
-div.login-container {
-  padding-top: 10em;
-  text-align: center;
-  color: #fff
-}
-
-div.login-logo {
-  padding-bottom: 2em;
-}
-
 
 
 /* DASHBOARD */
