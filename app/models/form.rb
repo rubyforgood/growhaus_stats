@@ -28,6 +28,15 @@ class Form < ActiveRecord::Base
     @gid ||= google_sheet_url.to_s.split('gid=').last
   end
 
+  def last_updated
+    if to_worksheet && to_worksheet.rows.length > 1
+      timestamp_index = to_worksheet.rows.first.index('Timestamp')
+      @last_updated ||= to_worksheet.rows.last[timestamp_index]
+    end
+  rescue
+    nil
+  end
+
   def to_worksheet
     if google_sheet
       @worksheet ||= google_sheet.worksheets.find do |worksheet|
