@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150801192310) do
     t.string   "google_form_url"
     t.string   "frequency"
     t.integer  "department_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.string   "google_sheet_url"
   end
