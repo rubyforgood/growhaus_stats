@@ -69,6 +69,9 @@
         </ul>
       </li>
 
+      <% if current_user.admin? %>
+        <li><%= link_to "Users", users_path, class: "white-text" %></li>
+      <% end %>
       <li><%= link_to "Logout", logout_path, method: :delete, class: 'white-text' %></li>
     </ul>
   </div>
