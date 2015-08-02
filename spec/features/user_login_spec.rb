@@ -3,6 +3,10 @@ require "webmock/rspec"
 OmniAuth.config.test_mode = true
 
 RSpec.describe "Unauthenticated user", type: :feature do
+  before :each do
+    create_departments
+  end
+
   it "can login" do
     page.visit root_path
     user = mock_omniauth_user

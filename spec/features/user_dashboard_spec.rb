@@ -3,6 +3,10 @@ require "webmock/rspec"
 OmniAuth.config.test_mode = true
 
 RSpec.describe "User dashboard", type: :feature do
+  before :each do
+    create_departments
+  end
+
   describe "authorization" do
     it "unauthenticated user should not be able to view the user dashboard" do
       page.visit users_path

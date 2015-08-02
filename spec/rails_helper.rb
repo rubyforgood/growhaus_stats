@@ -32,6 +32,12 @@ def admin_login
   user
 end
 
+def create_departments
+  Department.create!(name: "Distribution")
+  Department.create!(name: "Production")
+  Department.create!(name: "Education")
+end
+
 private
 
 def mock_omniauth_user
