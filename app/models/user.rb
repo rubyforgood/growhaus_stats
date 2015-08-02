@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
                       'kmanuel09@gmail.com']
 
   validate :accepted_email
-  validate :at_least_one_admin, on: :update
   belongs_to :department
 
   enum role: %w(default admin)
