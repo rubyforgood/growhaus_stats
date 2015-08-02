@@ -29,18 +29,20 @@
         <% unless @department %>
           <td><%= form.department.name %></td>
         <% end %>
-        <td>
-          <%= link_to edit_form_path(form) do %>
-            <i class="mdi-lg mdi-editor-mode-edit"></i>
-            Edit
-          <% end %>
-        </td>
-        <td>
-          <%= link_to form, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="mdi-lg mdi-action-delete"></i>
-            Delete
-          <% end %>
-        </td>
+        <% if current_user.admin? %>
+          <td>
+            <%= link_to edit_form_path(form) do %>
+              <i class="mdi-lg mdi-editor-mode-edit"></i>
+              Edit
+            <% end %>
+          </td>
+          <td>
+            <%= link_to form, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="mdi-lg mdi-action-delete"></i>
+              Delete
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
