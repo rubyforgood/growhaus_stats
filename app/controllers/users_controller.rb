@@ -6,9 +6,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    params["users"].each do |id, values|
-      user = User.find(id)
-      user.update_attributes!(department_id: values[:department_id], role: values[:role].to_i)
+    User.transaction do
+      params["users"].each do |id, values|
+        user = User.find(id)
+        user.assign_attributes(department_id: values[:department_id], role: values[:role].to_i)
+        user.save!
+        user.at_least_one_admin
+      end
     end
     redirect_to users_path
   end
