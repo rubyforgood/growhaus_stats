@@ -6,6 +6,20 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# If a local config/application.yml file is available, use it to
+# set environment variables on startup that can be used in places like
+# secrets.yml. Prefer pre-set env variables if they already exist.
+begin
+  settings_path = File.expand_path('../application.yml', __FILE__)
+  settings      = YAML.load_file(settings_path)
+
+  settings.each do |key, value|
+    ENV[key.upcase] ||= value
+  end
+rescue Errno::ENOENT
+  Rails.logger.warn 'Unable to find local application.yml file.  Skipping.'
+end
+
 module GrowhausStats
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
