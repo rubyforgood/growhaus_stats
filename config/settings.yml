@@ -1,0 +1,9 @@
+# This is just a convenient place to keep application-wide settings
+# that are safe to commit into the repo.  No secrets or credentials
+# should go here.
+
+google_scopes:
+  - email
+  - profile
+  - drive.readonly
+  - https://spreadsheets.google.com/feeds/
