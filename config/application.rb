@@ -17,7 +17,7 @@ begin
     ENV[key.upcase] ||= value
   end
 rescue Errno::ENOENT
-  Rails.logger.warn 'Unable to find local application.yml file.  Skipping.'
+  puts 'Unable to find local application.yml file.  Skipping.'
 end
 
 module GrowhausStats
