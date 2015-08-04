@@ -41,12 +41,12 @@ class Form < ActiveRecord::Base
   end
 
   def last_updated
-    if to_worksheet && to_worksheet.rows.length > 1
-      timestamp_index = to_worksheet.rows.first.index('Timestamp')
-      @last_updated ||= to_worksheet.rows.last[timestamp_index]
-    elsif to_worksheet
-      to_worksheet.updated
-    end
+    return @last_updated if @last_updated
+
+    index = columns.map(&:downcase).index('timestamp')
+    value = data.last[index] unless data.blank?
+
+    @last_updated = (value.present? ? value : to_worksheet.updated)
   rescue
     nil
   end
