@@ -34,14 +34,44 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# Clear existing task so we can replace it rather than "add" to it.
+Rake::Task['deploy:compile_assets'].clear 
+
 namespace :deploy do
+  desc 'Compile assets'
+  task :compile_assets => [:set_rails_env] do
+    # invoke 'deploy:assets:precompile'
+    invoke 'deploy:assets:precompile_local'
+    invoke 'deploy:assets:backup_manifest'
+  end
+
+  namespace :assets do
+    desc 'Precompile assets locally and then rsync to web servers' 
+    task :precompile_local do 
+      # compile assets locally
+      run_locally do
+        execute "RAILS_ENV=#{fetch(:rails_env)} bundle exec rake assets:precompile"
+      end
+
+      # rsync to each server
+      local_dir = './public/assets/'
+      on roles( fetch(:assets_roles, [:web]) ) do
+        # this needs to be done outside run_locally in order for host to exist
+        remote_dir = "#{host.user}@#{host.hostname}:#{release_path}/public/assets/"
+
+        run_locally { execute "rsync -av --delete #{local_dir} #{remote_dir}" }
+      end
+
+      # clean up
+      run_locally { execute "rm -rf #{local_dir}" }
+    end
+  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       execute "cd #{current_path} && bundle exec pumactl restart"
     end
   end
-
 end
 
 after :deploy, 'deploy:restart'
