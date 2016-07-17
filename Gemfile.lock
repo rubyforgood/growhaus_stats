@@ -285,7 +285,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
-  rails (= 4.2.3)
+  rails (~> 4.2.3)
   roadie (~> 2.4)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
@@ -297,5 +297,8 @@ DEPENDENCIES
   webmock
   whenever
 
+RUBY VERSION
+   ruby 2.2.4p230
+
 BUNDLED WITH
-   1.10.6
+   1.12.5
